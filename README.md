@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=venom&height=320&text=MASTER%20CHESS&fontSize=70&color=0:000000,100:D4AF37&stroke=D4AF37&fontColor=ffffff&animation=fadeIn" width="100%"/>
+<img src="https://chessmaster-liart.vercel.app//api?type=venom&height=320&text=MASTER%20CHESS&fontSize=70&color=0:000000,100:D4AF37&stroke=D4AF37&fontColor=ffffff&animation=fadeIn" width="100%"/>
 
 <br>
 
