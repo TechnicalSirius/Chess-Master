@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Master - Premium Web Client</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="screen active">
+        <div class="splash-bg"></div>
+        <div class="splash-content">
+            <div class="logo-wrapper">
+                <i class="fa-solid fa-crown logo-icon-large"></i>
+                <h1 class="logo-text">CHESS</h1>
+                <h2 class="master-text">MASTER</h2>
+                <p class="subtitle">The Ultimate Strategy Game</p>
+            </div>
+            
+            <div class="loading-section">
+                <p class="loading-text">LOADING...</p>
+                <div class="loading-bar-container">
+                    <div class="loading-bar" id="splash-loading-bar"></div>
+                    <span id="loading-percentage">0%</span>
+                </div>
+                <p class="press-start blink hidden" id="press-start-text">Press Any Key to Start</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Menu -->
+    <div id="main-menu" class="screen hidden">
+        <div class="menu-bg"></div>
+        <div class="menu-sidebar glass-panel">
+            <div class="menu-header">
+                <div class="menu-logo">
+                    <i class="fa-solid fa-crown golden-crown"></i>
+                    <div class="logo-text-vertical">
+                        <span class="chess-text">CHESS</span>
+                        <span class="master-text-small">MASTER</span>
+                    </div>
+                </div>
+                <div class="menu-top-icons">
+                    <i class="fa-solid fa-trophy golden-icon"></i>
+                    <i class="fa-solid fa-chart-simple"></i>
+                </div>
+            </div>
+            
+            <div class="menu-options">
+                <button class="menu-btn primary-purple" data-action="start-ai">
+                    <div class="btn-icon"><i class="fa-solid fa-play"></i></div>
+                    <div class="btn-text">
+                        <span class="btn-title">PLAY NOW</span>
+                        <span class="btn-subtitle">Start a new game</span>
+                    </div>
+                </button>
+                <button class="menu-btn" data-action="start-ai">
+                    <div class="btn-icon"><i class="fa-solid fa-robot"></i></div>
+                    <div class="btn-text">
+                        <span class="btn-title">PLAY VS AI</span>
+                        <span class="btn-subtitle">Challenge the computer</span>
+                    </div>
+                </button>
+                <button class="menu-btn" data-action="start-local">
+                    <div class="btn-icon"><i class="fa-solid fa-user-group"></i></div>
+                    <div class="btn-text">
+                        <span class="btn-title">LOCAL MULTIPLAYER</span>
+                        <span class="btn-subtitle">Play with a friend</span>
+                    </div>
+                </button>
+                <button class="menu-btn" data-action="start-puzzle">
+                    <div class="btn-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+                    <div class="btn-text">
+                        <span class="btn-title">PUZZLE MODE</span>
+                        <span class="btn-subtitle">Test your skills</span>
+                    </div>
+                </button>
+                <button class="menu-btn" data-action="exit-game">
+                    <div class="btn-icon"><i class="fa-solid fa-arrow-right-from-bracket"></i></div>
+                    <div class="btn-text">
+                        <span class="btn-title">EXIT GAME</span>
+                        <span class="btn-subtitle">See you again!</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen hidden">
+        <div class="game-container">
+            <!-- Top Bar -->
+            <header class="game-header glass-panel">
+                <div class="header-player left-player" id="player-white-info">
+                    <img src="https://ui-avatars.com/api/?name=Arjun&background=random" alt="Avatar" class="avatar-small">
+                    <div class="player-details-row">
+                        <span class="player-name">Arjun 🇮🇳</span>
+                        <span class="player-rating">1620</span>
+                    </div>
+                </div>
+                
+                <div class="header-center">
+                    <div class="player-timer" id="timer-white">10:00</div>
+                    <div class="turn-indicator"><span class="turn-dot white-dot"></span> White to move</div>
+                    <div class="player-timer" id="timer-black">10:00</div>
+                </div>
+
+                <div class="header-player right-player" id="player-black-info">
+                    <div class="player-details-row text-right">
+                        <span class="player-name">🇺🇸 Alexander</span>
+                        <span class="player-rating">1580</span>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=AI&background=random" alt="Avatar" class="avatar-small">
+                </div>
+            </header>
+
+            <div class="game-body">
+                <!-- Left Side (Captured Pieces) -->
+                <aside class="left-panel">
+                    <div class="captured-box glass-panel" id="white-captured">
+                        <span class="captured-title">Captured</span>
+                        <div class="captured-pieces-list"></div>
+                    </div>
+                    <div class="captured-box glass-panel" id="black-captured">
+                        <span class="captured-title">Captured</span>
+                        <div class="captured-pieces-list"></div>
+                    </div>
+                </aside>
+
+                <!-- Center Board -->
+                <main class="board-area">
+                    <div class="board-wrapper">
+                        <div id="chessboard" class="chessboard neon-theme">
+                            <!-- Squares -->
+                        </div>
+                        <div class="board-coordinates letters">
+                            <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span>
+                        </div>
+                        <div class="board-coordinates numbers">
+                            <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Right Side (Move History & Controls) -->
+                <aside class="right-panel">
+                    <div class="history-box glass-panel">
+                        <h3>Move History</h3>
+                        <div class="move-history-container">
+                            <table class="move-history-table">
+                                <tbody id="move-history-body">
+                                    <!-- Moves -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="game-controls">
+                        <button class="control-btn-wide" id="btn-undo"><i class="fa-solid fa-rotate-left"></i> Undo</button>
+                        <button class="control-btn-wide" id="btn-hint"><i class="fa-solid fa-lightbulb" style="color: goldenrod;"></i> Hint</button>
+                        <button class="control-btn-wide" id="btn-analysis"><i class="fa-solid fa-wand-magic-sparkles"></i> Analysis</button>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Bottom Bar -->
+            <footer class="game-footer glass-panel">
+                <button class="footer-btn" data-action="back-to-menu"><i class="fa-solid fa-bars"></i> Menu</button>
+                <div class="footer-center">
+                    <button class="footer-btn-pill"><i class="fa-solid fa-palette"></i> Theme</button>
+                </div>
+                <div class="footer-right">
+                    <button class="footer-btn action-red" id="btn-resign"><i class="fa-solid fa-flag"></i> Resign</button>
+                    <button class="footer-btn action-gold" id="btn-draw"><i class="fa-regular fa-handshake"></i> Draw</button>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Promotion Modal -->
+    <div id="promotion-modal" class="modal hidden">
+        <div class="modal-content glass-panel" style="text-align: center;">
+            <div class="modal-header" style="justify-content: center;">
+                <h2>Promote Pawn</h2>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 1rem; color: var(--text-muted);">Choose a piece to replace your pawn:</p>
+                <div class="promotion-options" id="promotion-options">
+                    <!-- Options injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen hidden">
+        <canvas id="confetti-canvas"></canvas>
+        <div class="result-overlay" id="result-overlay"></div>
+        <div class="result-container glass-panel" id="result-container">
+            <!-- Dynamic Icon -->
+            <div class="result-icon-wrap" id="result-icon-wrap">
+                <i class="fa-solid fa-crown result-icon" id="result-icon"></i>
+            </div>
+            <h1 class="result-title" id="result-title">VICTORY</h1>
+            <p class="result-reason" id="result-reason">Checkmate!</p>
+            
+            <div class="result-cards">
+                <div class="player-card" id="result-card-white">
+                    <div class="card-badge" id="badge-white"></div>
+                    <img src="https://ui-avatars.com/api/?name=You&background=1a1c2c&color=00d4ff&bold=true" alt="Player" id="result-avatar-white">
+                    <h3 id="result-name-white">You</h3>
+                    <p class="card-rating" id="result-rating-white">1620</p>
+                </div>
+                <div class="vs-divider">
+                    <span class="vs-text-glow">VS</span>
+                </div>
+                <div class="player-card" id="result-card-black">
+                    <div class="card-badge" id="badge-black"></div>
+                    <img src="https://ui-avatars.com/api/?name=AI&background=1a1c2c&color=8b5cf6&bold=true" alt="Opponent" id="result-avatar-black">
+                    <h3 id="result-name-black">AI</h3>
+                    <p class="card-rating" id="result-rating-black">1580</p>
+                </div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-item stat-animate" style="--delay: 0.1s">
+                    <i class="fa-solid fa-crosshairs stat-icon"></i>
+                    <span class="stat-value green-text" id="stat-accuracy">92%</span>
+                    <span class="stat-label">Accuracy</span>
+                </div>
+                <div class="stat-item stat-animate" style="--delay: 0.3s">
+                    <i class="fa-solid fa-chess stat-icon"></i>
+                    <span class="stat-value" id="stat-moves">28</span>
+                    <span class="stat-label">Moves</span>
+                </div>
+                <div class="stat-item stat-animate" style="--delay: 0.5s">
+                    <i class="fa-solid fa-clock stat-icon"></i>
+                    <span class="stat-value" id="stat-time">04:23</span>
+                    <span class="stat-label">Time Left</span>
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <button class="result-btn result-btn-primary" data-action="rematch">
+                    <i class="fa-solid fa-rotate-right"></i> PLAY AGAIN
+                </button>
+                <button class="result-btn result-btn-secondary" data-action="back-to-menu">
+                    <i class="fa-solid fa-house"></i> MENU
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modules -->
+    <script src="js/effects.js" defer></script>
+    <script src="js/logic.js" defer></script>
+    <script src="js/board.js" defer></script>
+    <script src="js/ai.js" defer></script>
+    <script src="js/timer.js" defer></script>
+    <script src="js/ui.js" defer></script>
+    <script src="js/script.js" defer></script>
+</body>
+</html>
