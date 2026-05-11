@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="https://chessmaster-liart.vercel.app//api?type=venom&height=320&text=MASTER%20CHESS&fontSize=70&color=0:000000,100:D4AF37&stroke=D4AF37&fontColor=ffffff&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=venom&height=320&text=MASTER%20CHESS&fontSize=70&color=0:000000,100:D4AF37&stroke=D4AF37&fontColor=ffffff&animation=fadeIn" width="100%"/>
 
 <br>
 
@@ -53,7 +53,7 @@ Designed with futuristic UI, smooth animations, advanced chess systems, and prof
 
 <div align="center">
 
-<a href="https://chessmaster.vercel.app">
+<a href="https://chessmaster-liart.vercel.app/">
 
 <img src="https://img.shields.io/badge/🎮%20PLAY%20MASTER%20CHESS-D4AF37?style=for-the-badge&logo=google-chrome&logoColor=black"/>
 
@@ -158,7 +158,7 @@ Tournament ready
 <tr>
 
 <td align="center">
-<img src="assets/screenshots/game-board.png" width="40%">
+<img src="assets/screenshots/board.png" width="40%">
 <br><br>
 <h3>GAME BOARD</h3>
 </td>
