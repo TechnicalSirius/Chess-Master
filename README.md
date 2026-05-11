@@ -142,13 +142,13 @@ Tournament ready
 <tr>
 
 <td align="center">
-<img src="assets/screenshot/splash" width="10%">
+<img src="assets/screenshots/splash" width="10%">
 <br><br>
 <h3>🏠 SPLASH SCREEN</h3>
 </td>
 
 <td align="center">
-<img src="assets/screenshot/menu" width="10%">
+<img src="assets/screenshots/menu" width="10%">
 <br><br>
 <h3>♟️ MENU</h3>
 </td>
@@ -158,13 +158,13 @@ Tournament ready
 <tr>
 
 <td align="center">
-<img src="assets/screenshot/defeat" width="10%">
+<img src="assets/screenshots/defeat" width="10%">
 <br><br>
 <h3>GAME BOARD</h3>
 </td>
 
 <td align="center">
-<img src="assets/screenshot/defeat" width="10%">
+<img src="assets/screenshots/defeat" width="10%">
 <br><br>
 <h3>💀 DEFEAT SCREEN</h3>
 </td>
